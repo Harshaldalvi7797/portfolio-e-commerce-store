@@ -1,7 +1,10 @@
 /** @format */
 require("dotenv").config();
+const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 // getting-started.js
 const mongoose = require("mongoose");
 mongoose
@@ -16,6 +19,10 @@ mongoose
   .catch(err => {
     console.log(err);
   });
+
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cors());
 
 const port = 8000;
 app.listen(() => {
