@@ -1,8 +1,8 @@
 /** @format */
 
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const crypto = require("crypto");
-const uuidv1 = require("uuidv1/v1");
+//sconst uuidv1 = require("uuidv1/v1");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -23,13 +23,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  userinfo: {
-    type: String,
-    trim: true
-  },
+  // userinfo: {
+  //   type: String,
+  //   trim: true
+  // },
   encry_password: {
-    type: String,
-    required: true
+    type: String
+    //required: true
   },
   salt: String,
   roll: {
