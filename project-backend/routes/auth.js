@@ -8,7 +8,11 @@ const { body, check } = require("express-validator");
 const { signup, signout } = require("../controller/auth");
 router.post(
   "/signup",
-  [check("name", "must be at least 5 chars long").isLength({ min: 5 })],
+  [
+    check("name", "must be at least 5 chars long").isLength({ min: 5 }),
+    check("email", "Email is required").isEmail(),
+    check("password", "password is required is minimum 3").isLength({ min: 3 })
+  ],
   signup
 );
 

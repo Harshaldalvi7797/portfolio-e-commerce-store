@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
   // },
   encry_password: {
     type: String
-    //required: true
+    // required: true
   },
   salt: String,
   roll: {
@@ -53,10 +53,6 @@ userSchema
   });
 
 userSchema.method = {
-  autheticate: function(plainpassword) {
-    return this.securePassword(plainpassword) === this.encry_password;
-  },
-
   securePassword: function(plainpassword) {
     if (!password) return "";
     try {
