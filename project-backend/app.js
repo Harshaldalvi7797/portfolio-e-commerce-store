@@ -24,7 +24,7 @@ mongoose
 
 //Middlewares
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(cookieParser()); // add and remove some values in cookies
 app.use(cors());
 
 //My Routes
