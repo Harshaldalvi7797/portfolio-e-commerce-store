@@ -40,24 +40,26 @@ const userSchema = new mongoose.Schema({
     type: Array,
     default: []
   }
+}, {
+  timestamps: true
 });
 userSchema
   .virtual("password")
-  .set(function(password) {
+  .set(function (password) {
     this._password = password;
     this.salt = uuidv1();
     this.encry_password = this.securePassword(password);
   })
-  .get(function() {
+  .get(function () {
     return this._password;
   });
 
 userSchema.methods = {
-  autheticate: function(plainpassword) {
+  autheticate: function (plainpassword) {
     return this.securePassword(plainpassword) === this.encry_password;
   },
 
-  securePassword: function(plainpassword) {
+  securePassword: function (plainpassword) {
     if (!plainpassword) return "";
     try {
       return crypto
