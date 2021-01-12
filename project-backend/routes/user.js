@@ -3,7 +3,7 @@ const router = express.Router()
 const {
     getUserById,
     getUser,
-    getAllUsers
+    getAllUsers, updateUser, userPurchaseList
 } = require("../controller/user")
 const {
     isSignedIn,
@@ -15,5 +15,6 @@ router.param("userId", getUserById)
 
 router.get("/user/:userId", isSignedIn, isAuthenticated, getUser)
 router.get("/users", getAllUsers)
-
-module.exports = router
+router.put("/user/:userId", isSignedIn, isAuthenticated, updateUser)
+router.get("/order/user/:userId", isSignedIn, isAuthenticated, userPurchaseList);
+module.exports = router;
