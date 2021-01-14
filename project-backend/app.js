@@ -9,6 +9,8 @@ const cors = require("cors");
 //my routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user")
+const categoryRoutes = require("./routes/category")
+const productsRoutes = require("./routes/product")
 // getting-started.js
 const mongoose = require("mongoose");
 mongoose
@@ -32,6 +34,8 @@ app.use(cors());
 //My Routes
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
+app.use("/api", productsRoutes)
 
 //Port
 const port = process.env.PORT || 5000;
