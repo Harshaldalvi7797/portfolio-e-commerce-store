@@ -23,7 +23,7 @@ export const signin = user => {
         method: "POST",
         headers: {
             accept: "application/json",
-            ContentType: "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(user)
     })
