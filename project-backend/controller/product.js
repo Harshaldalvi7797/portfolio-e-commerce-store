@@ -147,7 +147,8 @@ exports.getAllProducts = (req, res) => {
           error: "Product not found"
         });
       }
-      res.json(products)
+      res.json(products);
+      console.log(products)
     }))
 
 

@@ -1,30 +1,50 @@
-import React from "react";
-import "../style.css"
-import { API } from "../backend"
-import Base from "./Base"
-import Menu from "./Menu";
+import React, { useState, useEffect } from "react";
+// import "../styles.css";
+import { API } from "../backend";
+import Base from "./Base";
+import Card from "./Card";
+import { getProducts } from "./helper/coreapicalls";
 
-const Home = () => {
-    console.log("api is", API)
+
+export default function Home() {
+    const [products, setProducts] = useState([])
+    const [error, setError] = useState(false);
+
+    const loadAllProducts = () => {
+        getProducts().then(data => {
+            if (data.error) {
+                setError(data.error)
+
+            }
+            else {
+                setProducts(data)
+                console.log(data)
+
+            }
+        })
+
+    }
+
+    useEffect(() => {
+        loadAllProducts()
+
+    }, [])
+    console.log(products)
+
     return (
-        <div className="">
-       
-
-            <Base title="Home Page">
+        <Base title="Home Page" description="Welcome to the Tshirt Store">
+            <div className="row text-center">
+                <h1 className="text-white">All of tshirts</h1>
                 <div className="row">
-                    <div className="col-4">
-                        <button className="btn btn-success">TEST</button>
-                    </div>
-                    <div className="col-4">
-                        <button className="btn btn-success">TEST</button>
-                    </div>
-                    <div className="col-4">
-                        <button className="btn btn-success">TEST</button>
-                    </div>
+                    {products.map((product, index) => {
+                        return (
+                            <div key={index} className="col-4 mb-4">
+                                <Card product={product} />
+                            </div>
+                        );
+                    })}
                 </div>
-            </Base>
-        </div>
+            </div>
+        </Base>
     );
 }
-
-export default Home;

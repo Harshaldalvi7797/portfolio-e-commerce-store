@@ -42,7 +42,7 @@ const AddProduct = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setValues({ ...values, categories: data, formData: new window.FormData() });
+                setValues({ ...values, categories: data, formData: new FormData() });
             }
         });
     };
@@ -68,6 +68,7 @@ const AddProduct = () => {
                     loading: false,
                     createdProduct: data.name
                 });
+                console.log(values)
             }
         });
     };
