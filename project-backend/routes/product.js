@@ -26,7 +26,10 @@ router.get("/product/photo/:productId", photo)
 //delete routes
 router.delete("/removeproduct/:productId/:userId", isSignedIn,
   isAuthenticated,
-  isAdmin, removeProduct)
+  isAdmin, removeProduct);
+// router.delete("/removeproduct/:productId/:userId", isSignedIn,
+//   isAuthenticated,
+//   isAdmin, removeProduct);
 router.put("/updateproduct/:productId/:userId", isSignedIn,
   isAuthenticated,
   isAdmin, updateProduct)
